@@ -1,5 +1,8 @@
 // 这里放置需要全局注册的组件
 import Vue from 'vue';
+import Top from './top.vue';
+import Main from './main.vue';
+import Bottom from './bottom.vue';
 
 // 自动加载 global 目录下的 .vue 结尾的文件
 const componentsContext = require.context('./', true, /\.vue$/);
@@ -10,3 +13,6 @@ componentsContext.keys().forEach((component) => {
   const ctrl = componentConfig.default || componentConfig;
   Vue.component(ctrl.name, ctrl);
 });
+
+export default { Top, Main, Bottom };
+

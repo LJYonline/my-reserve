@@ -1,0 +1,75 @@
+
+//报名enter
+//签到sign
+//查询search
+//其他other
+<template>
+  <div id="bottom">
+    <div @click="goToAppEnter">
+      <img class="bottom-img" src="~@assets/img/baoming.png" />
+      <div  class="bottom-font">报名</div>
+    </div>
+    <div @click="goToAppSign">
+      <img class="bottom-img" src="~@assets/img/qiandao.png" />
+      <div class="bottom-font">签到</div>
+    </div>
+    <div @click="goToAppSearch">
+      <img class="bottom-img" src="~@assets/img/chaxun.png" />
+      <div class="bottom-font">查询</div>
+    </div>
+    <div >
+      <img class="bottom-img" src="~@assets/img/qita.png" />
+      <div class="bottom-font">其他</div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AppBottom',
+  data (){
+    return {
+    };
+  },
+  methods: {
+    goToAppEnter: function () {
+      console.log('appEnter');
+      this.$router.push({ path: '/appEnter' });
+    },
+    goToAppSign: function () {
+      console.log('appSign');
+      this.$router.push('/appSign');
+    },
+    goToAppSearch: function () {
+      console.log('appSearch');
+      this.$router.push('/appSearch');
+    }
+  }
+};
+</script>
+
+<style>
+#bottom {
+  display: flex;
+  justify-content: space-around;
+  height: 49px;
+  width: 100%;
+  background: #f9f9f9;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottom-img {
+  margin-top: 5px;
+  height: 24px;
+  width: 24px;
+}
+
+.bottom-font {
+  display: block;
+  font-size: 10px;
+  color: #808692;
+}
+</style>
