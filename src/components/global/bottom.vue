@@ -32,17 +32,17 @@ export default {
     };
   },
   methods: {
-    goToAppEnter: function () {
+    goToAppEnter () {
       console.log('appEnter');
-      this.$router.push({ path: '/appEnter' });
+      this.$router.push({ path: '/appEnter' }).catch(() => {});
     },
-    goToAppSign: function () {
+    goToAppSign () {
       console.log('appSign');
-      this.$router.push('/appSign');
+      this.$router.push({ path: '/appSign' }).catch(() => {});
     },
-    goToAppSearch: function () {
+    goToAppSearch () {
       console.log('appSearch');
-      this.$router.push('/appSearch');
+      this.$router.push({path: '/appSearch' }).catch(() => {});
     }
   }
 };

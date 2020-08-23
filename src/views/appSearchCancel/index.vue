@@ -2,11 +2,11 @@
 <div id="common">
   <AppTop></AppTop>
   <div class="app-common-enter">
-    <img class="img" src="~@assets/img/Artboard 5 Copy.png" >
-    <div class="font">您已报名！您预约的活动时间段{{time}}</div>
+    <img class="img" src="~@assets/img/appSearchCancel.png" >
+    <div class="cancel-font">您的报名已取消</div>
   </div>
-  <button class="button1" @click="goBack">返回</button>
-  <!-- <button class="button2">查询活动人员名单</button> -->
+  <!-- <button class="button1" @click="goBack">返回</button> -->
+  <button class="button2">查询活动人员名单</button>
   <AppBottom></AppBottom>
 </div>
 </template>
@@ -14,8 +14,7 @@
 <script>
 // var a = this.$route.query.time;
 export default {
-  name: 'AppCommon',
-  time: '',
+  name: 'AppSearchCancel',
   id: '',
   tel: '',
   data () {
@@ -34,9 +33,6 @@ export default {
     this.time = routerParams.time;
     this.id = routerParams.id;
     this.tel = routerParams.tel;
-    },
-    goBack: function () {
-      this.$router.go(-1);
     }
 }
 };
@@ -55,11 +51,11 @@ export default {
     height: auto;
   }
 
-  .font {
+  .cancel-font {
     font-size: 16px;
     color: #3f3c51;
-    line-height: 30px;
-    margin-left: 30px;
+    line-height: 30px;/* margin-left: 30px; */
+    text-align: center;
   }
 
   .button1 {

@@ -6,8 +6,8 @@
       <img class="app-enter-logo-img" src="~@assets/img/logo_hd.png">
     </div>
     <div class="app-enter-message-number">
-      <div class="app-enter-message-id">员工号：123456</div>
-      <div class="app-enter-message-tel">手机号：13888602654</div>
+      <div class="app-enter-message-id">员工号：<input class="message-id-input" type="text" value= "请输入..." @input="getMessageId($event)" /></div>
+      <div class="app-enter-message-tel">手机号：<input class="message-id-input" type="text" value= "请输入..." @input="getMessageTel($event)"></div>
     </div>
   </div>
   <div class="app-enter-show">
@@ -45,7 +45,6 @@
 <script>
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
-import appCommon from '../appCommon';
 let vm = null;
   export default {
   name: 'AppEnter',
@@ -54,6 +53,8 @@ let vm = null;
       msg: '',
       vm: '',
       time: '',
+      Id: '',
+      Tel: '',
       bannerList: [
           {
            id: '1',
@@ -97,10 +98,20 @@ let vm = null;
       },
       submitEnter: function (event) {
         console.log(this.time);
-        this.$router.push({ path: './appCommon/', query: { time: this.time } });
+        if (this.time){
+          this.$router.push({ path: './appCommon/', query: { time: this.time, id: this.id, tel: this.tel } });
+        } else alert('请选择时间或填写信息');
       },
       dataChange (data){
         this.time = data;
+      },
+      getMessageId (e) {
+        const id = e.target.value;
+        this.id = id;
+      },
+      getMessageTel (e) {
+        const tel = e.target.value;
+        this.tel = tel;
       }
   },
   mounted () {
@@ -164,12 +175,18 @@ let vm = null;
   }
 
   .app-enter-message-id {
+    display: block;
     font-size: 16px;
     color: #3f3c51;
     line-height: 30px;
     text-align: left;
     margin-top: 28px;
     margin-left: 10px;
+  }
+
+  .message-id-input {
+    display: inline-block;
+    width: 80px;
   }
 
   .app-enter-message-tel {

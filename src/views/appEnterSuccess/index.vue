@@ -5,28 +5,13 @@
     <img class="img" src="~@assets/img/appEnterSuccess.png" >
     <div class="font">您的报名已提交，请在16点后查询报告结果。</div>
   </div>
-  <button class="button1" @click="goToAppSearchCancel">取消报名</button>
+  <button class="button1" @click="goBack">取消报名</button>
   <!-- <button class="button2">查询活动人员名单</button> -->
-  <!-- <van-button type="primary"  @click="showPicker=true">
+  <van-button type="primary" @clicksize="large"  @click="showPopup">
     查询活动人员名单
-  </van-button> -->
-  <van-button
-    class="button2"
-    type="primary"
-    :value="value"
-    @click="showPicker = true"
-  >查询活动人员名单
   </van-button>
-  <van-popup v-model="showPicker" position="bottom" >
-  <!-- <van-popup v-model="showPicker" round position="bottom" >  round是圆角的 -->
-    <van-picker
-      title="请选择查询场地"
-      show-toolbar
-      :columns="columns"
-      @cancel="showPicker = false"
-      @confirm="onConfirm"
-    />
-</van-popup>
+  <popup  v-if="show" @closetip="show" ：arr="fathermsg"></popup>
+  <van-cell is-link @click="showPopup">展示弹出层</van-cell>
   <AppBottom></AppBottom>
 </div>
 </template>
@@ -34,9 +19,7 @@
 <script>
 import Vue from 'vue';
 import 'vant/lib/index.css';
-import { Field, Button, Popup, Picker } from 'vant';
-Vue.use(Field);
-Vue.use(Button);
+import { Popup, Picker } from 'vant';
 Vue.use(Popup);
 Vue.use(Picker);
 export default {
@@ -45,10 +28,7 @@ export default {
   data () {
     return {
       show: false,
-      msg: '',
-      value: '',
-      showPicker: false,
-      columns: ['1号场馆', '2号场馆', '3号场馆']
+      fathermsg: ''
     };
    },
   created: function () {
@@ -63,13 +43,9 @@ export default {
     goBack: function () {
       this.$router.go(-1);
     },
-     goToAppSearchCancel () {
-      this.$router.push({ path: './appSearchCancel/', query: { id: this.id } });
-    },
-    onConfirm (value) {
-      this.value = value;
-      this.showPicker = false;
-    },
+    showPopup () {
+      this.show = !this.show;
+    }
 }
 };
 </script>

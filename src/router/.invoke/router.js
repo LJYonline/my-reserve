@@ -12,9 +12,19 @@ export const routes = [{
     path: '/appEnter',
   },
   {
+    component: () => import('@/views/appEnterSuccess/index.vue'),
+    name: 'appEnterSuccess',
+    path: '/appEnterSuccess',
+  },
+  {
     component: () => import('@/views/appSearch/index.vue'),
     name: 'appSearch',
     path: '/appSearch',
+  },
+  {
+    component: () => import('@/views/appSearchCancel/index.vue'),
+    name: 'appSearchCancel',
+    path: '/appSearchCancel',
   },
   {
     component: () => import('@/views/appSign/index.vue'),
@@ -33,7 +43,7 @@ export const routes = [{
   },
   {
     path: '/',
-    redirect: '/appEnter'
+    redirect: '/hello'
   },
 ];
 const router = new Router({
