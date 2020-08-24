@@ -1,17 +1,24 @@
 {
-    "return_code": "0", 
-    "return_msg": "查询成功", 
-    "data": [
-        {
-            "userName": "张三(14717)",
-            "signIn": "已签到"
-        }, 
-        {
-            "userName": "李四(4717)",
-            "signIn": "未签到"
-        }
-
-
+  "return_code": "0", 
+  "return_msg": "查询成功", 
+  "data": {
+    "list":[
+      {
+        "userName": "张三(14717)",
+        "signIn": "已签到",
+        "signFlag": 1
+      }, 
+      {
+        "userName": "李四(4717)",
+        "signIn": "未签到",
+        "signFlag": 0
+      },
+      {
+        "userName": "小刘(1234)",
+        "signIn": "未签到",
+        "signFlag": 0
+      }
     ],
-  "time": "17:30-18:30"
+    "time": "17:30-18:30"
+  }
 }

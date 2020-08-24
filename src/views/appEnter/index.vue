@@ -157,10 +157,12 @@ let vm = null;
 
   .app-enter-message {
     display: block;
-    width: 100%;
+    margin-left: -30px;
+    width: 430px;
     height: 132px;
     margin-top: 70px;
     background: #fff;
+    border-radius: 0 0 60% 60%;
   }
 
   .app-enter-logo {
@@ -240,7 +242,8 @@ let vm = null;
   }
 
   .swiper-container {
-    height: 220px;
+    margin-top: 25px;
+    height: 222px;
   }
 
   .swiper-slide div {
@@ -291,7 +294,7 @@ let vm = null;
     height: 81px;
     width: 100%;
     background: #fff;
-    margin-top: -5px;
+    margin-top: -4px;
     border-radius: 0 0 10px 10px;
     font-size: 18px;
     color: #3f3c51;

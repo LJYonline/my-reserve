@@ -5,19 +5,21 @@
       <img class="app-search-img" src="~@assets/img/Artboard_5 _Copy_6.png"/>
     </div>
     <div class="app-search-div2">
-      <div class="app-search-date">{{resData.time}}</div>
+      <div class="app-search-date">{{resData.data.time}}</div>
       <div class="app-search-site">{{data}}</div>
     </div>
     <div >
-      <div class="app-search-data" v-if="resData.data">
-        <div class="app-search-data-item">
-          <div class="app-search-data-name" ><span>{{resData.data[0].userName}}</span></div>
-          <div class="app-search-data-result"><span>{{resData.data[0].signIn}}</span></div>
+      <!-- <div class="app-search-data" v-if="resData.data" v-for="data in resData.data" :key="data.index"> -->
+      <div class="app-search-data" >
+        <!-- <div  class="app-search-data-item"  v-if ="data.signFlag" :class="{'active':.active}"> -->
+          <div class="app-search-data-item" v-for="data in resData.data.list" :key="data.index" :class='{"active":data.signFlag === 0}' >
+            <div class="app-search-data-name" ><span>{{data.userName}}</span></div>
+            <div :class='{"app-search-data-result": true, "app-search-data-result2":data.signFlag === 1}'><span>{{data.signIn}}</span></div>
         </div>
-        <div class="app-search-data-item2">
-          <div class="app-search-data-name"><span>{{resData.data[1].userName}}</span></div>
-          <div class="app-search-data-result2"><span>{{resData.data[1].signIn}}</span></div>
-        </div>
+        <!-- <div v-else class="app-search-data-item2">
+          <div class="app-search-data-name"><span>{{data.userName}}</span></div>
+          <div class="app-search-data-result2"><span>{{data.signIn}}</span></div>
+       </div> -->
       </div>
     </div>
     <button class="app-search-button" @click="goBack">返回</button>
@@ -63,6 +65,7 @@ export default {
         })
         .then((res) => {
           this.resData = res;
+          console.log(res.data.signFlag);
           console.log('接口请求成功：' + JSON.stringify(res, null, 2));
           })
         .catch((err) => {
@@ -135,7 +138,12 @@ export default {
     margin-bottom: 10px;
   }
 
-  .app-search-data-item2 {
+  .app-search-data-item.active {
+    background: #dcdcdc;
+    border: 1px solid  #dcdcdc;
+  }
+
+  /* .app-search-data-item2 {
     background: #dcdcdc;
     border: 1px solid  #dcdcdc;
     border-radius: 9px;
@@ -143,7 +151,7 @@ export default {
     height: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
+  } */
 
   .app-search-data-name {
     display: inline-block;
