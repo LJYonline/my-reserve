@@ -27,6 +27,21 @@ export const routes = [{
     path: '/appSearchCancel',
   },
   {
+    component: () => import('@/views/appSearchLater/index.vue'),
+    name: 'appSearchLater',
+    path: '/appSearchLater',
+  },
+  {
+    component: () => import('@/views/appSearchOver/index.vue'),
+    name: 'appSearchOver',
+    path: '/appSearchOver',
+  },
+  {
+    component: () => import('@/views/appSearchUser/index.vue'),
+    name: 'appSearchUser',
+    path: '/appSearchUser',
+  },
+  {
     component: () => import('@/views/appSign/index.vue'),
     name: 'appSign',
     path: '/appSign',
@@ -43,7 +58,7 @@ export const routes = [{
   },
   {
     path: '/',
-    redirect: '/hello'
+    redirect: '/appEnter'
   },
 ];
 const router = new Router({

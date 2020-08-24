@@ -21,9 +21,10 @@
   "dependencies": {
     "@winner-fed/cloud-utils": "*",
     "@winner-fed/magicless": "*",
-    "axios": "0.19.2",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "lib-flexible": "^0.3.2",
+    "module": "^1.2.5",
     "normalize.css": "8.0.1",
     "swiper": "^6.1.2",
     "vant": "^2.10.2",

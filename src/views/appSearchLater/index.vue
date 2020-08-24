@@ -2,8 +2,8 @@
 <div id="common">
   <AppTop></AppTop>
   <div class="app-common-enter">
-    <img class="img" src="~@assets/img/appSearchCancel.png" >
-    <div class="cancel-font">您的报名已取消</div>
+    <img class="img" src="~@assets/img/appSearchLater.png" >
+    <div class="cancel-font">{{ resData.return_msg }}</div>
   </div>
   <van-button
     class="button2"
@@ -34,29 +34,34 @@ Vue.use(Button);
 Vue.use(Popup);
 Vue.use(Picker);
 export default {
-  name: 'AppSearchCancel',
+  name: 'AppSearchLater',
   Id: '',
   data () {
     return {
       show: false,
-      msg: '',
-      value: '',
+      resData: '',
       index: '',
+      value: '',
       showPicker: false,
       columns: ['1号场馆', '2号场馆', '3号场馆', '4号场馆']
     };
    },
   created () {
-    this.getCancelId();
-    this.DeleteId();
+    this.getData();
   },
   methods: {
-    getCancelId () {
-       // 后端获取到用户Id 4717
-       this.Id = '4717';
-    },
-    DeleteId () {
-       // 后端删除用户 4717
+    getData () {
+      const data = {};
+      this.$services
+      .searchSignUp({
+        method: 'get',
+        data
+      }).then((res) => {
+        console.log('接口请求成功：' + JSON.stringify(res, null, 2));
+        this.resData = res;
+      }).catch((err) => {
+        console.log('接口请求异常：' + err);
+      });
     },
     onConfirm (value, index) {
       console.log(value); // 选中场馆的值

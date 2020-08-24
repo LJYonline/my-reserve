@@ -2,11 +2,10 @@
 <div id="common">
   <AppTop></AppTop>
   <div class="app-common-enter">
-    <img class="img" src="~@assets/img/Artboard 5 Copy.png" >
-    <div class="font">您已报名！您预约的活动时间段{{time}}</div>
+    <img class="img" src="~@assets/img/appSearchOVer.png" >
+    <div class="font">非常抱歉，由于突发原因，今天的活动时间取消了，请您关注下次活动时间。</div>
   </div>
   <button class="button1" @click="goBack">返回</button>
-  <!-- <button class="button2">查询活动人员名单</button> -->
   <AppBottom></AppBottom>
 </div>
 </template>
@@ -14,27 +13,14 @@
 <script>
 // var a = this.$route.query.time;
 export default {
-  name: 'AppCommon',
-  time: '',
-  id: '',
-  tel: '',
+  name: 'AppSearchOver',
   data () {
     return {
     };
    },
-  created () {
-    this.getParams();
+  created: function () {
   },
   methods: {
-    getParams: function (){ // 取到路由带过来的参数
-      const routerParams = this.$route.query; // 将数据放在当前组件的数据内
-      console.log('传来的时间参数==' + routerParams.time);
-      console.log('传来的id参数==' + routerParams.id);
-      console.log('传来的tel参数==' + routerParams.tel);
-      this.time = routerParams.time;
-      this.id = routerParams.id;
-      this.tel = routerParams.tel;
-    },
     goBack: function () {
       this.$router.go(-1);
     }

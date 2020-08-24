@@ -6,10 +6,6 @@
     <div class="font">您的报名已提交，请在16点后查询报告结果。</div>
   </div>
   <button class="button1" @click="goToAppSearchCancel">取消报名</button>
-  <!-- <button class="button2">查询活动人员名单</button> -->
-  <!-- <van-button type="primary"  @click="showPicker=true">
-    查询活动人员名单
-  </van-button> -->
   <van-button
     class="button2"
     type="primary"
@@ -47,31 +43,34 @@ export default {
       show: false,
       msg: '',
       value: '',
+      index: '',
       showPicker: false,
-      columns: ['1号场馆', '2号场馆', '3号场馆']
+      columns: ['1号场馆', '2号场馆', '3号场馆', '4号场馆']
     };
    },
-  created: function () {
+  created () {
     this.getParams();
   },
   methods: {
-    getParams: function (){ // 取到路由带过来的参数
-        const routerParams = this.$route.query.time; // 将数据放在当前组件的数据内
-    console.log('传来的参数==' + routerParams);
-    this.time = routerParams;
+    getParams (){ // 取到路由带过来的参数
+      const routerParams = this.$route.query.time; // 将数据放在当前组件的数据内
+      console.log('传来的参数==' + routerParams);
+      this.time = routerParams;
     },
-    goBack: function () {
+    goBack () {
       this.$router.go(-1);
     },
      goToAppSearchCancel () {
       this.$router.push({ path: './appSearchCancel/', query: { id: this.id } });
     },
-    onConfirm (value) {
-      this.value = value;
-      this.showPicker = false;
-    },
-}
+    onConfirm (value, index) {
+      console.log(value); // 选中场馆的值
+      console.log(index); // 选中场馆的索引
+      this.$router.push({ path: './appSearchUser/', query: { index: index } });
+    }
+  }
 };
+
 </script>
 <style>
   .app-common-enter {

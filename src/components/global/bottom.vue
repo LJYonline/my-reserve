@@ -37,12 +37,17 @@ export default {
       this.$router.push({ path: '/appEnter' }).catch(() => {});
     },
     goToAppSign () {
+      this.qinado = '~@assets/img/qiandao.png';
       console.log('appSign');
       this.$router.push({ path: '/appSign' }).catch(() => {});
     },
     goToAppSearch () {
+      // 获取后端的数据 若有突发情况
+      // this.$router.push({ path: '/appSearchOver'} )
+      // 判断是否为 16点以后访问
+      // this.$router.push({ path: '/appSearchLater')
       console.log('appSearch');
-      this.$router.push({path: '/appSearch' }).catch(() => {});
+      this.$router.push({ path: '/appSearch' }).catch(() => {});
     }
   }
 };

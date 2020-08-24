@@ -6,8 +6,8 @@
       <img class="app-enter-logo-img" src="~@assets/img/logo_hd.png">
     </div>
     <div class="app-enter-message-number">
-      <div class="app-enter-message-id">员工号：<input class="message-id-input" type="text" value= "请输入..." @input="getMessageId($event)" /></div>
-      <div class="app-enter-message-tel">手机号：<input class="message-id-input" type="text" value= "请输入..." @input="getMessageTel($event)"></div>
+      <div class="app-enter-message-id">员工号：<input class="message-id-input" type="text" placeholder= "请输入..." @input="getMessageId($event)"/></div>
+      <div class="app-enter-message-tel">手机号：<input class="message-id-input" type="text" placeholder= "请输入..." @input="getMessageTel($event)"></div>
     </div>
   </div>
   <div class="app-enter-show">
@@ -23,18 +23,6 @@
           <div class="app-enter-data-time">{{banner.time}}</div>
         </div>
       </div>
-      <!-- <div class="swiper-slide">
-        <div class="app-enter-data-select">
-          <img class="app-enter-data-img" src="~@assets/img/Artboard_22_Copy1.png">
-      <div class="app-enter-data-time">19:30 – 20:30</div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="app-enter-data-right">
-          <img class="app-enter-data-img" src="~@assets/img/Artboard_22_Copy2.png">
-          <div class="app-enter-data-time">20:30 – 21:30</div>
-        </div>
-      </div> -->
     </div>
   </div>
   <button class="app-enter-button" @click="submitEnter">报名</button>
@@ -57,22 +45,28 @@ let vm = null;
       Tel: '',
       bannerList: [
           {
+           id: '0',
+           time: '17:30 – 18:30',
+           url: require('../../assets/img/Artboard_22_Copy4.png'),
+           class: 'app-enter-data-one'
+          },
+          {
            id: '1',
            time: '18:30 – 19:30',
-           url: require('../../assets/img/Artboard_22_Copy4.png'),
-           class: 'app-enter-data-left'
+           url: require('../../assets/img/Artboard_22_Copy1.png'),
+           class: 'app-enter-data-two'
           },
           {
             id: '2',
             time: '19:30 – 20:30',
-            url: require('../../assets/img/Artboard_22_Copy1.png'),
-            class: 'app-enter-data-select'
+            url: require('../../assets/img/Artboard_22_Copy2.png'),
+            class: 'app-enter-data-three'
           },
           {
             id: '3',
             time: '20:30 – 21:30',
-            url: require('../../assets/img/Artboard_22_Copy2.png'),
-            class: 'app-enter-data-right'
+            url: require('../../assets/img/Artboard_22_Copy3.png'),
+            class: 'app-enter-data-four'
           }
       ]
     };
@@ -98,8 +92,24 @@ let vm = null;
       },
       submitEnter: function (event) {
         console.log(this.time);
-        if (this.time){
-          this.$router.push({ path: './appCommon/', query: { time: this.time, id: this.id, tel: this.tel } });
+        if (this.time && this.Id && this.Tel){
+          // 发送报名数据
+          // this.$services.enterPost({
+          //   method: 'post',
+          //   id: this.Id
+          // })
+          // .then((res) => {
+          //   console.log('接口请求成功：' + JSON.stringify(res, null, 2));
+          // })
+          // .catch((err) => {
+          //   console.log('接口请求异常：' + err);
+          // });
+          const res = 1; // 假如成功
+          if (res){
+            this.$router.push({ path: './appEnterSuccess/', query: { time: this.time, id: this.id, tel: this.tel } });
+          } else {
+            alert('报名失败，请重新尝试');
+          }
         } else alert('请选择时间或填写信息');
       },
       dataChange (data){
@@ -233,12 +243,6 @@ let vm = null;
     height: 220px;
   }
 
-  /* .swiper-wrapper {
-    margin-left: -49px;
-    margin-right: -49px;
-    margin-top: 20px;
-  } */
-
   .swiper-slide div {
     width: 167px;
   }
@@ -265,7 +269,7 @@ let vm = null;
     margin-left: 20px !important;
   }
 
-  .app-enter-data-select {
+  .app-enter-data-two {
     height: 220px;
     background: #ff6a6a;/* width: 167px;height: 220px;margin-left: 32px; */
     border-radius: 10px;
@@ -276,7 +280,7 @@ let vm = null;
     width: 167px;
   }
 
-  .app-enter-data-left {
+  .app-enter-data-one {
     height: 220px;
     background: #ffe400;
     border-radius: 10px;
@@ -296,9 +300,16 @@ let vm = null;
     text-align: center;
   }
 
-  .app-enter-data-right {
+  .app-enter-data-three {
     height: 220px;
     background: #3994e9;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px #999;
+  }
+
+  .app-enter-data-four {
+    height: 220px;
+    background: #00b38a;
     border-radius: 10px;
     box-shadow: 0 0 5px 1px #999;
   }
