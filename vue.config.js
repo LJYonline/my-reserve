@@ -40,7 +40,7 @@ const genPlugins = () => {
       ignore: ['images', 'components'],
       redirect: [
         {
-          redirect: '/hello',
+          redirect: '/appEnter',
           path: '/'
         }
       ]
@@ -49,13 +49,13 @@ const genPlugins = () => {
     new AddAssetHtmlPlugin([
       {
         filepath: path.resolve(__dirname, './public/config.local.js'),
-        hash: true,
+        hash: true
       },
       {
         filepath: path.resolve(__dirname, './public/console.js'),
-        hash: true,
+        hash: true
       }
-    ]),
+    ])
   ];
 
   if (isProd()) {

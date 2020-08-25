@@ -5,14 +5,14 @@
       <img class="app-search-img" src="~@assets/img/Artboard_5 _Copy_6.png"/>
     </div>
     <div class="app-search-div2">
-      <div class="app-search-date">{{resData.data.time}}</div>
+      <div class="app-search-date" v-if="resData">{{resData.data.time}}</div>
       <div class="app-search-site">{{data}}</div>
     </div>
     <div >
       <!-- <div class="app-search-data" v-if="resData.data" v-for="data in resData.data" :key="data.index"> -->
-      <div class="app-search-data" >
+      <div class="app-search-data" v-if="resData">
         <!-- <div  class="app-search-data-item"  v-if ="data.signFlag" :class="{'active':.active}"> -->
-          <div class="app-search-data-item" v-for="data in resData.data.list" :key="data.index" :class='{"active":data.signFlag === 0}' >
+          <div   v-for="data in resData.data.list" :key="data.index" :class='{ "app-search-data-item":true, "active":data.signFlag === 0}' >
             <div class="app-search-data-name" ><span>{{data.userName}}</span></div>
             <div :class='{"app-search-data-result": true, "app-search-data-result2":data.signFlag === 1}'><span>{{data.signIn}}</span></div>
         </div>

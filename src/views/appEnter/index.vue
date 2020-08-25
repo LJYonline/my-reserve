@@ -92,7 +92,8 @@ let vm = null;
       },
       submitEnter: function (event) {
         console.log(this.time);
-        if (this.time && this.Id && this.Tel){
+        // if (this.time && this.Id &&this.Tel){
+           if (this.time){
           // 发送报名数据
           // this.$services.enterPost({
           //   method: 'post',

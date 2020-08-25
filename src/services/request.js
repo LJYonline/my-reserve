@@ -153,9 +153,7 @@ export default function request (url, {
 }) {
   const baseURL = autoMatchBaseUrl(prefix);
 
-  const formatHeaders = Object.assign({
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-  }, headers);
+  const formatHeaders = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', ...headers };
 
   const defaultConfig = {
     baseURL,
